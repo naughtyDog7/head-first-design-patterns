@@ -17,7 +17,6 @@ public class Light {
     }
 
     public void on() {
-
         if (!on.get()) {
             log.info(getClass().getSimpleName() + " on");
             on.set(true);
