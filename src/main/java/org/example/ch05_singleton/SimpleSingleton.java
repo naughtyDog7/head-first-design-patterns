@@ -5,8 +5,15 @@ package org.example.ch05_singleton;
 No thread-safety
 Lazy initialization*/
 
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.Getter;
+
+@Data
 public class SimpleSingleton {
+    @Getter(AccessLevel.NONE)
     private static SimpleSingleton instance;
+
     private final String info;
 
     private SimpleSingleton(String info) {

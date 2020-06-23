@@ -5,8 +5,15 @@ package org.example.ch05_singleton;
 Thread safe
 every getInstance() call is synchronized --> less performance*/
 
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.Getter;
+
+@Data
 public class SimpleSingletonSync {
+    @Getter(AccessLevel.NONE)
     private static SimpleSingletonSync instance;
+
     private final String info;
 
     private SimpleSingletonSync(String info) {

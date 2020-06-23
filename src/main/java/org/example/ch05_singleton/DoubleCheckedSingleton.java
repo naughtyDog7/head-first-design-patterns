@@ -7,8 +7,15 @@ Lazy initialization
 Using volatile is recommended
 Only from java 1.5*/
 
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.Getter;
+
+@Data
 public class DoubleCheckedSingleton {
+    @Getter(AccessLevel.NONE)
     private volatile static DoubleCheckedSingleton instance;
+
     private final String info;
 
     private DoubleCheckedSingleton(String info) {
