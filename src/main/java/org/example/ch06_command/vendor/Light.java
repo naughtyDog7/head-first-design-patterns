@@ -18,19 +18,19 @@ public class Light {
 
     public void on() {
         if (!on.get()) {
-            log.info(getClass().getSimpleName() + " on");
+            System.out.println("\uD83D\uDCA1" + " on");
             on.set(true);
         } else {
-            log.info("Already on");
+            System.out.println("\uD83D\uDCA1" + " Already on");
         }
     }
 
     public void off() {
         if (on.get()) {
-            log.info(getClass().getSimpleName() + " off");
+            System.out.println("\uD83D\uDD0C" + " off");
             on.set(false);
         } else {
-            log.info("It was off");
+            System.out.println("\uD83D\uDD0C" + " It was off");
         }
     }
 }
