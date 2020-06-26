@@ -1,34 +1,38 @@
 package org.example.ch06_command.remote;
 
 import org.example.ch06_command.commands.Command;
+import org.example.ch06_command.commands.NullCommand;
 
 import java.util.Deque;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class SimpleRemoteControl {
-    private final Deque<Command> commandQueue;
+    private final AtomicReference<Command> command;
+
     private final Deque<Command> executedCommands;
 
     public SimpleRemoteControl() {
-        this.commandQueue = new ConcurrentLinkedDeque<>();
+        this.command = new AtomicReference<>(new NullCommand());
         this.executedCommands = new ConcurrentLinkedDeque<>();
     }
 
-    public void addCommand(Command command) {
-        commandQueue.offer(command);
+    public void setCommand(Command command) {
+        this.command.set(Optional.ofNullable(command)
+                .orElseGet(NullCommand::new));
     }
 
     public void click() {
-        if (commandQueue.isEmpty())
-            throw new NullPointerException("No commands specified");
-        Command command = commandQueue.poll();
-        command.execute();
-        executedCommands.push(command);
+        command.get().execute();
+        executedCommands.push(command.get());
     }
 
     public void undo() {
-        if (executedCommands.isEmpty())
-            throw new NullPointerException("Nothing to undo");
-        executedCommands.pop().undo();
+        synchronized (executedCommands) {
+            if (executedCommands.isEmpty())
+                throw new NullPointerException("Nothing to undo");
+            executedCommands.pop().undo();
+        }
     }
 }

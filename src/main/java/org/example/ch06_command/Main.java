@@ -12,26 +12,17 @@ public class Main {
         SimpleRemoteControl remoteControl = new SimpleRemoteControl();
         Light light = new Light("guest room");
 
-        remoteControl.addCommand(new LightOnCommand(light));
+        remoteControl.setCommand(new LightOnCommand(light));
         remoteControl.click();
-        log.info("CURRENT LIGHT " + light.toString());
 
-        remoteControl.addCommand(new LightOffCommand(light));
+        remoteControl.setCommand(new LightOffCommand(light));
         remoteControl.click();
-        log.info("CURRENT LIGHT " + light.toString());
 
-        remoteControl.addCommand(new LightOffCommand(light));
+        remoteControl.setCommand(new LightOffCommand(light));
         remoteControl.click();
-        log.info("CURRENT LIGHT " + light.toString());
 
         remoteControl.undo();
-        log.info("CURRENT LIGHT " + light.toString());
-
         remoteControl.undo();
-        log.info("CURRENT LIGHT " + light.toString());
-
         remoteControl.undo();
-        log.info("CURRENT LIGHT " + light.toString());
-
     }
 }
