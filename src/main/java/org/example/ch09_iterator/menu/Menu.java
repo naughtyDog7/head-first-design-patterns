@@ -49,9 +49,14 @@ public class Menu extends MenuComponent {
         return List.copyOf(menuComponents);
     }
 
+    private Iterator<MenuComponent> iterator;
+
     @Override
     public Iterator<MenuComponent> iterator() {
-        return new CompositeIterator<>(menuComponents.iterator());
+        if (iterator == null) {
+            iterator = new CompositeIterator<>(menuComponents.iterator());
+        }
+        return iterator;
     }
 
     @Override
