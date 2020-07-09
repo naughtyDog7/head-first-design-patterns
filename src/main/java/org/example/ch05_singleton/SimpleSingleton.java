@@ -1,14 +1,15 @@
 package org.example.ch05_singleton;
 
-/*Simple singleton without synchronized
-
-No thread-safety
-Lazy initialization*/
-
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
 
+/**
+ * <b>Simple singleton without synchronized</b><br>
+ * <p>
+ * No thread-safety<br>
+ * Lazy initialization<br>
+ */
 @Data
 public class SimpleSingleton {
     @Getter(AccessLevel.NONE)

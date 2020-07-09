@@ -2,15 +2,16 @@ package org.example.ch05_singleton;
 
 import lombok.Data;
 
-/*Singleton with nested SingletonHolder class
-
-Thread-safe
-Lazy init
-High performance
-
-jvm loads nested class only when getInstance() method is called
-INSTANCE singleton holder initialization happens on demand
-initialization is thread safe*/
+/**
+ * <b>Singleton with nested SingletonHolder class</b><br><br>
+ * <p>
+ * Thread-safe<br>
+ * Lazy init<br>
+ * High performance<br>
+ *
+ * jvm loads nested class only when getInstance() method is called
+ * INSTANCE singleton holder initialization happens on demand<br>
+ */
 @Data
 public class SingletonNestedHolder {
     private final String info;

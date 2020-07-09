@@ -2,15 +2,16 @@ package org.example.ch05_singleton;
 
 import lombok.extern.slf4j.Slf4j;
 
-/*Enum singleton
-
-Thread-safe
-Serializable
-Reflection access safe
-Effectively lazy
-
-Best solution*/
-
+/**
+ * <b>Enum singleton</b>
+ * <p>
+ * Thread-safe<br>
+ * Serializable<br>
+ * Reflection access safe<br>
+ * Effectively lazy<br>
+ * <p><br>
+ * <b><i>Best solution</i></b>
+ */
 @Slf4j
 public enum EnumSingleton {
     INSTANCE("INFO");
